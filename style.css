@@ -1,0 +1,622 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+header {
+    /* background-color: brown; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3vh;
+    width: 50vw;
+    height: 20vh;
+    border: 3px solid hsl(217, 16%, 45%);
+    border-radius: 20px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    text-transform: uppercase;
+}
+
+#gameName {
+    /* background-color: brown; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15vw;
+    height: 20vh;
+    margin-left: 2vw;
+    color: hsl(0, 0%, 100%);
+}
+
+#gameName h1 {
+    line-height: 0.8;
+    margin: 0;
+    font-size: 3vw;
+}
+
+#score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 100%);
+    width: 10vw;
+    height: 15vh;
+    margin-right: 2vw;
+    border-radius: 10px;
+}
+
+#score h3 {
+    color: hsl(229, 64%, 46%);
+    letter-spacing: 2px;
+    font-size: 1.5vw;
+    margin: 0;
+    line-height: 0.9;
+    font-weight: 600;
+}
+
+#score h1 {
+    line-height: 0.9;
+    color: hsl(229, 25%, 31%);
+    font-size: 4.5vw;
+    margin: 0;
+}
+
+#userTurn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 67vh;
+}
+
+#choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 5vh;
+    width: 30vw;
+    height: 50vh;
+}
+
+#triangle svg {
+    width: 30vw;
+    height: 40vh;
+}
+
+#divPaper, #divRock, #divScissors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 30vh;
+    position: absolute;
+    cursor: pointer;
+}
+
+#divPaper {
+    /* background-color: blueviolet; */
+    top: -10vh;
+    left: -2vw;
+}
+#divRock {
+    /* background-color: brown; */
+    bottom: 0;
+    /* left: 9vw; */
+}
+#divScissors {
+    /* background-color: aquamarine; */
+    top: -10vh;
+    right: -2vw;
+}
+
+.svgMainStyle {
+    width: 9vw;
+    height: 18vh;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    background: white;
+    /* cursor: pointer; */
+}
+
+.svgStyle svg {
+    width: 10vw;
+    height: 10vh;
+}
+
+#triangle svg path{
+    stroke-width: 20;
+}
+
+.optedStyle {
+    /* position: static; */
+    /* width: 20vw;
+    height: 22vh; */
+    width: 11vw;
+    height: 22vh;
+}
+
+#paper { 
+    border: 1vw solid hsl(230, 89%, 65%);
+    box-shadow: 0px 0.5vw 0 0.5px hsl(230, 89%, 62%), inset 0px 0.5vw 0px 0.5px hsla(228, 25%, 31%, 0.1);
+    /* top: -5vh;
+    left: 0vw; */
+}
+
+#rock {
+    border: 1vw solid hsl(349, 70%, 56%);
+    box-shadow: 0px 0.5vw 0 0.5px hsl(349, 71%, 52%), inset 0px 0.5vw 0px 0.5px hsla(228, 25%, 31%, 0.1);
+    /* bottom: 0vh;
+    left: 9vw; */
+}
+
+#scissors {
+    border: 1vw solid hsl(40, 84%, 53%);
+    box-shadow: 0px 0.5vw 0 0.5px hsl(39, 89%, 49%), inset 0px 0.5vw 0px 0.5px hsla(228, 25%, 31%, 0.1);
+    /* top: -5vh;
+    right: 0vw; */
+}
+
+#compTurn {
+    display: none;
+    justify-content: space-around;
+    width: 50vw;
+    height: 67vh;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    text-transform: uppercase;
+    color: white;
+}
+
+#compTurn h2 {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+#you, #comp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 50vh;
+}
+
+#result {
+    /* line-height: 0; */
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    height: 20vh;
+    margin-top: 20vh;
+    z-index: 1;
+}
+
+#winLoss {
+    font-size: 2.5vw;
+}
+
+#restart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: hsl(225, 11%, 21%);
+    width: 10vw;
+    height: 5vh;
+    border-radius: 5px;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+#yourChoice, #compChoice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13vw;
+    height: 26vh;
+    margin-top: 5vh;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.178);
+    transition: box-shadow 0.5s;
+}
+
+#rules {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+#rulesModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    width: 25vw;
+    height: 50vh;
+    border-radius: 1vw;
+}
+
+#rulesHead {
+    width: 20vw;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#rulesHead h1 {
+    color: hsl(229, 25%, 31%);
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.8vw;
+}
+
+#close {
+    cursor: pointer;
+}
+
+#buttons  {
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    height: 5vh;
+}
+
+#buttons button {
+    width: 7vw;
+    background: transparent;
+    border: 2px solid hsl(217, 16%, 45%);
+    border-radius: 0.5vw;
+    color: white;
+    font-size: 1vw;
+    letter-spacing: 2px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.attribution {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    height: 5vh;
+    color: hsl(229, 25%, 31%);
+    font-size: 0.7vw; 
+    text-align: center; 
+}
+    
+.attribution a {  
+    color: hsl(0, 0%, 100%);
+}
+
+@media (max-width:1023px) {
+    header {
+        width: 80vw;
+        height: 10vh;
+    }
+
+    #score {
+        width: 15vw;
+        height: 7vh;
+    }
+
+    #triangle svg path{
+        stroke-width: 30;
+    }
+    
+    #divPaper {
+        top: -1vh;
+        left: -5vw;
+    }
+    #divRock {
+        bottom: 0;
+    }
+    #divScissors {
+        top: -1vh;
+        right: -5vw;
+    }
+
+    .svgStyle svg {
+        width: 7vw;
+        height: 7vh;
+    }
+    
+    .optedStyle {
+        width: 13vw;
+        height: 10vh;
+    }
+
+    #compTurn {
+        width: 80vw;
+        height: 60vh;
+    }
+    
+    #you, #comp {
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+        width: 30vw;
+        height: 30vh;
+    }
+    
+    #result {
+        position: absolute;
+        top: 50vh;
+        width: 50vw;
+        height: 15vh;
+        margin-top: 0vh;
+    }
+    
+    #winLoss {
+        font-size: 10vw;
+    }
+    
+    #restart {
+        width: 50vw;
+        height: 10vh;
+        border-radius: 2vw;
+        font-size: 5vw;
+        cursor: pointer;
+    }
+    
+    #yourChoice, #compChoice {
+        width: 15vw;
+        height: 13vh;
+    }
+
+    #rulesModal {
+        width: 50vw;
+        height: 50vh;
+        border-radius: 2vw;
+    }
+    
+    #rulesHead {
+        margin-top: 5vh;
+    }
+    
+    #rulesHead h1 {
+        font-size: 4vw;
+    }
+
+    #buttons  {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 80vw;
+        height: 20vh;
+    }
+    
+    #buttons button {
+        width: 40vw;
+        height: 6vh;
+        border-radius: 2vw;
+        font-size: 5vw;
+    }
+
+    .attribution {
+        height: 10vh;
+        font-size: 3vw; 
+    }
+}
+
+@media (max-width:541px){
+    header {
+        width: 80vw;
+        height: 15vh;
+    }
+
+    #gameName {
+        width: 30vw;
+        height: 15vh;
+        margin-left: 5vw;
+    }
+    
+    #gameName h1 {
+        font-size: 7vw;
+    }
+    
+    #score {
+        width: 20vw;
+        height: 10vh;
+        margin-right: 5vw;
+    }
+    
+    #score h3 {
+        font-size: 3vw;
+    }
+    
+    #score h1 {
+        line-height: 0.9;
+        color: hsl(229, 25%, 31%);
+        font-size: 10vw;
+    }
+
+    #userTurn {
+        width: 80vw;
+        height: 50vh;
+    }
+    
+    #choices {
+        margin-top: 5vh;
+        width: 40vw;
+        height: 40vh;
+    }
+
+    #triangle svg {
+        width: 25vw;
+        height: 30vh;
+    }
+    
+    #triangle svg path{
+        stroke-width: 30;
+    }
+
+    #divPaper, #divRock, #divScissors {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15vw;
+        height: 30vh;
+        position: absolute;
+        cursor: pointer;
+    }
+    
+    #divPaper {
+        top: -1vh;
+        left: 0vw;
+    }
+    #divRock {
+        bottom: -2vh;
+        left: 12vw;
+    }
+    #divScissors {
+        top: -1vh;
+        right: 0vw;
+    }
+
+    .svgMainStyle {
+        width: 14vw;
+        height: 9vh;
+    }
+    
+    .svgStyle svg {
+        width: 6vw;
+        height: 6vh;
+    }
+    
+    .optedStyle {
+        width: 13vw;
+        height: 10vh;
+    }
+    
+    #paper { 
+        border: 2vw solid hsl(230, 89%, 65%);
+        box-shadow: 0px 1vw 0 0.5px hsl(230, 89%, 62%), inset 0px 1vw 0px 0.5px hsla(228, 25%, 31%, 0.1);
+    }
+    
+    #rock {
+        border: 2vw solid hsl(349, 70%, 56%);
+        box-shadow: 0px 1vw 0 0.5px hsl(349, 71%, 52%), inset 0px 1vw 0px 0.5px hsla(228, 25%, 31%, 0.1);
+    }
+    
+    #scissors {
+        border: 2vw solid hsl(40, 84%, 53%);
+        box-shadow: 0px 1vw 0 0.5px hsl(39, 89%, 49%), inset 0px 1vw 0px 0.5px hsla(228, 25%, 31%, 0.1);
+    }
+
+    #compTurn {
+        width: 80vw;
+        height: 50vh;
+    }
+    
+    #compTurn h2 {
+        font-size: 2.5vw;
+    }
+    
+    #you, #comp {
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+        width: 30vw;
+        height: 30vh;
+    }
+    
+    #result {
+        position: absolute;
+        top: 50vh;
+        width: 50vw;
+        height: 15vh;
+        margin-top: 0vh;
+    }
+    
+    #winLoss {
+        font-size: 12vw;
+    }
+    
+    #restart {
+        width: 50vw;
+        height: 8vh;
+        border-radius: 2vw;
+        font-size: 5vw;
+        cursor: pointer;
+    }
+    
+    #yourChoice, #compChoice {
+        width: 16vw;
+        height: 13vh;
+    }
+    
+    #rulesModal {
+        width: 100vw;
+        height: 100vh;
+        padding: 5%;
+    }
+    
+    #rulesHead {
+        width: 100vw;
+        height: 10vh;
+        margin-top: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #rulesHead h1 {
+        font-size: 8vw;
+    }
+    
+    #close {
+        position: absolute;
+        bottom: 5vh;
+        cursor: pointer;
+    }
+
+    #rulesImg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 80vh;
+    }
+
+    #buttons  {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 80vw;
+        height: 20vh;
+    }
+    
+    #buttons button {
+        width: 40vw;
+        height: 6vh;
+        border-radius: 2vw;
+        font-size: 5vw;
+    }
+
+    .attribution {
+        height: 10vh;
+        font-size: 3vw; 
+    }
+}
